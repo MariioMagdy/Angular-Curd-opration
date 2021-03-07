@@ -1,0 +1,24 @@
+<div class="container">
+  <form #userForm="ngForm" class="p-5 bg-dark text-white">
+    <div>
+      <h1>CURD Operation</h1>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">User Name</label>
+      <input type="email" class="form-control"  aria-describedby="emailHelp" name="username" [(ngModel)]="userObj.username">
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" name="email"  aria-describedby="emailHelp" [(ngModel)]="userObj.email">
+
+    </div>
+
+    <button *ngIf="!isEdit" type="submit" class="btn btn-primary" (click)="addUser(userForm)">Submit</button>
+    <button *ngIf="isEdit" class="btn btn-primary" (click)="updateUser(userForm)">update</button>
+  </form>
+</div>
+
+<hr/>
+<app-user  (sendtoParent)="recevieUser($event)"></app-user>
+
